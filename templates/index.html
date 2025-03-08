@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Usage Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, black, rgb(194, 195, 192));
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            color: rgb(210, 82, 161);
+            margin-top: 20px;
+        }
+
+        .top-bar {
+            display: flex;
+            flex-direction: column; 
+            justify-content: flex-end;
+            position: absolute;
+            top: 25px;
+            right: 20px;
+        }
+
+        .top-bar a {
+            color: white;
+            text-decoration: none;
+            margin-bottom: 10px; 
+            font-weight: bold;
+        }
+
+        .category-data {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            margin-top: 20px;
+            height: 100vh;
+            background-color: black;
+            flex-wrap: wrap; 
+        }
+
+        #piechart {
+            max-width: 500px;
+            height: auto;
+            margin-top: 3rem;
+            margin-left: 2rem;
+            width: 100%; 
+        }
+
+        #info {
+            flex: 1;
+            color: white;
+            margin-top: 15%;
+            align-items: center;
+            justify-items: center;
+            text-align: center; 
+        }
+
+        #info p {
+            margin: 10px 0;
+        }
+        .images-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(27, 28, 20);
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .images-container h1 {
+            margin-top: -20px;
+        }
+
+        #barchart {
+            max-width: 80%;
+            max-height: 80%;
+            width: 100%; 
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .top-bar {
+                position: static;
+                flex-direction: row;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+
+            .category-data {
+                flex-direction: column; 
+                align-items: center;
+                gap: 20px;
+                height: auto;
+            }
+
+            #piechart {
+                margin-left: 0;
+                max-width: 80%;
+            }
+
+            #info {
+                margin-top: 0;
+                text-align: center;
+            }
+
+            #barchart {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .top-bar {
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+            .category-data {
+                flex-direction: column; 
+                gap: 10px;
+                height: auto;
+                margin-top: 0;
+            }
+
+            #piechart {
+                max-width: 90%;
+            }
+
+            #info {
+                margin-top: 5%;
+                text-align: center;
+            }
+
+            #barchart {
+                max-width: 100%;
+                max-height: 70%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>Software Usage Statistics</h1>
+    <div class="top-bar">
+        <a href="{{ url_for('home') }}">View Calendar</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+    <div class="category-data">
+        <img id="piechart" src="{{ url_for('static', filename='pie.png') }}" alt="Category chart">
+        <div id="info">
+            <p>This section shows the category and its usage time.</p>
+            {% for category, total_duration in app_data %}
+                <p>The {{ category }} usage time is {{ total_duration }}</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="images-container">
+        <h1>Usage Bar Chart</h1>
+        <img id="barchart" src="{{ url_for('static', filename='chart.png') }}" alt="App Usage Chart">
+    </div>
+
+</body>
+
+</html>
+

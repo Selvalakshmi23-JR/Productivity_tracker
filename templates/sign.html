@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to right, rgb(230, 78, 103),rgb(172, 88, 245));
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+        }
+
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .form-box.signup {
+            width: 400px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 4px solid #162938; 
+            border-radius: 10px; 
+            text-align: center;
+            opacity: 0.9; 
+        }
+
+        .form-box.signup h2 {
+            margin-bottom: 20px;
+            color: #162938;
+        }
+
+        .input-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-box label {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: #162938;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 2px solid #162938;
+            border-radius: 6px;
+            margin-top: 5px;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            background-color: #162938;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0e1f2e;
+        }
+
+        p {
+            margin-top: 20px;
+            color: #162938;
+        }
+
+        a {
+            color: #162938;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .form-box.signup {
+                width: 80%;
+                padding: 15px;
+            }
+
+            .input-box input {
+                padding: 8px;
+                font-size: 0.95rem;
+            }
+
+            .btn {
+                padding: 8px;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-box.signup {
+                width: 75%;
+                padding: 10px;
+            }
+
+            .input-box input {
+                padding: 6px;
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                padding: 8px;
+                font-size: 0.9rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper" action="/signup">
+        <div class="form-box signup">
+            <h2>Sign Up</h2>
+            <form method="POST">
+                <div class="input-box">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" class="form-control" placeholder="Enter your username" required>
+                </div>
+                <div class="input-box">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+        </div>
+    </div>
+</body>
+</html>
